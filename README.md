@@ -5,6 +5,7 @@ Known Issues
 ---------
 - [x] There is no "Shotgun Shot" Temporary Entity. This means custom weapons with base bullets functions do not harm anything.
 - [x] Custom weapons without custom plugins have their sounds interrupted
+- [x] Molotov fire is not visible to anyone
 
 Requirements
 ---------
