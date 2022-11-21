@@ -3,7 +3,7 @@ Sourcemod plugin that adds custom weapons with custom code to Team Fortress 2
 
 Known Issues
 ---------
-[x] There is no "Shotgun Shot" Temporary Entity. This means custom weapons with base bullets functions do not harm anything.
+- [x] There is no "Shotgun Shot" Temporary Entity. This means custom weapons with base bullets functions do not harm anything.
 
 Requirements
 ---------
