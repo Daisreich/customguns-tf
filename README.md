@@ -95,5 +95,6 @@ Special thanks
 Sourcemod (http://www.sourcemod.net)  
 DHooks by Dr!fter (https://forums.alliedmods.net/showthread.php?t=180114)  
 This thread (https://forums.alliedmods.net/showthread.php?p=1876312)   
+Alienmario
 [FT]Xen0morph  
 Henky‼  
