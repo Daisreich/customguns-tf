@@ -385,11 +385,7 @@ bool canSelectItem(int client, int inventoryIndex) {
 	int invAmmoType = GetArrayCell(inventoryAmmoType[client], inventoryIndex);
 	int gunIndex = GetArrayCell(inventory[client], inventoryIndex);
 
-	return invAmmo == -1
-		|| invAmmo > 0 // got ammo (cached clips) in inventory
-		|| invAmmoType == -1 // melee/other
-		|| getType(gunIndex) == GunType_Custom && !GetArrayCell(gunCustomKeepAmmo, gunIndex)  // custom-ammotype-guns always selectable
-		|| SDKCall(CALL_GetAmmoCount, client, invAmmoType) > 0 // got ammo in stock
+	return true
 }
 
 bool isCustom(int weaponEnt) {

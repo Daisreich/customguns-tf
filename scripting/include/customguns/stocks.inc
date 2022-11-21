@@ -314,10 +314,9 @@ stock void Tools_ViewPunch(int client, float angleOffset[3]){
 }
 
 stock void TE_SetupShotgunShot(float[3] origin, float[3] vecDir, int ammoID, int seed, int shots, int player, float spread, bool doImpacts = true, bool doTracers = true){
-	TE_Start("Shotgun Shot");
+	TE_Start("Fire Bullets");
 	TE_WriteVector("m_vecOrigin", origin);
-	TE_WriteVector("m_vecDir", vecDir);
-	TE_WriteNum("m_iAmmoID", ammoID);
+	TE_WriteVector("m_vecAngles", vecDir);
 	TE_WriteNum("m_iSeed", seed);
 	TE_WriteNum("m_iShots", shots);
 	TE_WriteNum("m_iPlayer", player);
@@ -460,7 +459,7 @@ stock void MarkSurrBoundsDirty(int entity){
 stock void swapVM(int client, bool predicted){
 	int oldVM = GetEntPropEnt(client, Prop_Send, "m_hViewModel");
 	char newClassname[32];
-	newClassname = predicted? "predicted_viewmodel" : "viewmodel";
+	newClassname = predicted? "tf_viewmodel" : "tf_viewmodel";
 	
 	if(oldVM != -1){
 		char sOld[32];	GetEntityClassname(oldVM, sOld, sizeof(sOld));
@@ -480,7 +479,7 @@ stock void swapVM(int client, bool predicted){
 	DispatchSpawn(vm);
 	
 	SetEntPropEnt(client, Prop_Send, "m_hViewModel", vm);
-	//ChangeEdictState(client, FindSendPropInfo("CHL2MP_Player", "m_hViewModel"));
+	//ChangeEdictState(client, FindSendPropInfo("CTFPlayer", "m_hViewModel"));
 }
 
 stock void VectorMin(const float vec1[3], const float vec2[3], float out[3]){
@@ -627,7 +626,7 @@ void createVM(int client){
 	SetEntProp(vm, Prop_Data, "m_nViewModelIndex", VM_INDEX);
 	DispatchSpawn(vm);
 	
-	//int offs = FindSendPropInfo("CHL2MP_Player", "m_hViewModel");
+	//int offs = FindSendPropInfo("CTFPlayer", "m_hViewModel");
 	int offset = FindDataMapOffs(client, "m_hViewModel");
 	SetEntDataEnt2(client, offset+4, vm, true);
 	//SetEntPropEnt(client, Prop_Send, "m_hViewModel", vm);
