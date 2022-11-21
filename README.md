@@ -1,5 +1,9 @@
-# customguns-hl2dm
-Sourcemod plugin that adds custom weapons to Half life 2: Deathmatch
+# customguns-tf
+Sourcemod plugin that adds custom weapons with custom code to Team Fortress 2
+
+Known Issues
+---------
+[x] There is no "Shotgun Shot" Temporary Entity. This means custom weapons with base bullets functions do not harm anything.
 
 Requirements
 ---------
