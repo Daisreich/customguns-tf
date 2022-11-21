@@ -480,6 +480,7 @@ public Action CustomGun(int client, int args) {
 public OnConfigsExecuted() {
 	precacheStyles();
 	
+	PrecacheModel("models/weapons/w_grenade.mdl");
 	PrecacheSound(SND_OPEN, true);
 	PrecacheSound(SND_CLOSE_OK, true);
 	PrecacheScriptSound(SND_CLOSE_CANC);
@@ -629,7 +630,7 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 	// weapon_hl2mp_base : the same as above, flickers
 	// basehlcombatweapon : pretty good, but overshadowing with other weapons at slot 0,0
 	// weapon_cubemap : also good, but does not show stock ammo of player (pesky cubemap has -1 clips and no ammotype on client by default)
-	int ent = CreateEntityByName("weapon_cubemap");
+	int ent = CreateEntityByName("tf_weapon_base");
 	if (ent != -1) {
 
  		GunType guntype = GetArrayCell(gunType, index);
@@ -695,7 +696,7 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 		} else {
 			SetEntProp(ent, Prop_Data, "m_bReloadsSingly", GetArrayCell(gunReloadsSingly, index));
 		}
-
+		SetEntProp(ent, Prop_Send, "m_iItemDefinitionIndex", 0);
 		TeleportEntity(ent, origin, NULL_VECTOR, NULL_VECTOR);
 	}
 	return ent;
