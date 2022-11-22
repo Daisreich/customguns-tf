@@ -630,7 +630,7 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 	// weapon_hl2mp_base : the same as above, flickers
 	// basehlcombatweapon : pretty good, but overshadowing with other weapons at slot 0,0
 	// weapon_cubemap : also good, but does not show stock ammo of player (pesky cubemap has -1 clips and no ammotype on client by default)
-	int ent = CreateEntityByName("tf_weapon_base");
+	int ent = CreateEntityByName("weapon_ifm_base");
 	if (ent != -1) {
 
  		GunType guntype = GetArrayCell(gunType, index);
