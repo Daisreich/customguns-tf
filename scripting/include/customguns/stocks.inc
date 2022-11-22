@@ -318,7 +318,6 @@ stock void TE_SetupShotgunShot(float[3] origin, float[3] vecDir, int ammoID, int
 	TE_WriteVector("m_vecOrigin", origin);
 	TE_WriteNum("m_iSeed", seed);
 	TE_WriteNum("m_iPlayer", player);
-	TE_WriteFloat("m_fSpread", spread);
 }
 
 stock void TE_SetupSpriteSpray(float[3] origin, float[3] vecDir, float[3] size, int modelIndex, int random, int count, float life, int flags){
