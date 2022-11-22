@@ -89,7 +89,7 @@ public MRESReturn GetDefaultClip1(int weapon, Handle hReturn) {
 		if (ammo != -1) {
 			DHookSetReturn(hReturn, ammo);
 			return MRES_Supercede;
-		}
+		} 
 	}
 	return MRES_Ignored;
 }
@@ -136,7 +136,6 @@ public MRESReturn AddViewKick(int weapon) {
 public MRESReturn FireBullets(int client, Handle hParams) {
 	// check if client is firing custom gun
 	if (selectedGunIndex[client] != -1 && gunEnt[client] != -1) {
-		/*
 		int damage = GetArrayCell(gunDmg, selectedGunIndex[client]);
 		DHookSetParamObjectPtrVar(hParams, 1, 52, ObjectValueType_Float, float(damage));
 		DHookSetParamObjectPtrVar(hParams, 1, 56, ObjectValueType_Int, damage);
@@ -152,9 +151,8 @@ public MRESReturn FireBullets(int client, Handle hParams) {
 		DHookGetParamObjectPtrVarVector(hParams, 1, 16, ObjectValueType_Vector, vecDir);
 		int ammoID = DHookGetParamObjectPtrVar(hParams, 1, 44, ObjectValueType_Int);
 		int shots = DHookGetParamObjectPtrVar(hParams, 1, 0, ObjectValueType_Int);
-		*/
-		//TE_SetupShotgunShot(origin, vecDir, ammoID, GetURandomInt() & 255, shots, client, spread, true, GetArrayCell(gunFireVisible, selectedGunIndex[client]));
-		//TE_SendToClient(client);
+		TE_SetupShotgunShot(origin, vecDir, ammoID, GetURandomInt() & 255, shots, client, spread, true, GetArrayCell(gunFireVisible, selectedGunIndex[client]), selectedGunIndex[client]);
+		TE_SendToClient(client);
 
 	}
 	return MRES_Ignored;

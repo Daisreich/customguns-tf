@@ -313,16 +313,12 @@ stock void Tools_ViewPunch(int client, float angleOffset[3]){
 	SetEntPropVector(client, Prop_Send, "m_vecPunchAngleVel", m_vecPunchAngleVel);
 }
 
-stock void TE_SetupShotgunShot(float[3] origin, float[3] vecDir, int ammoID, int seed, int shots, int player, float spread, bool doImpacts = true, bool doTracers = true){
+stock void TE_SetupShotgunShot(float[3] origin, float[3] vecDir, int ammoID, int seed, int shots, int player, float spread, bool doImpacts = true, bool doTracers = true, int weapon){
 	TE_Start("Fire Bullets");
 	TE_WriteVector("m_vecOrigin", origin);
-	TE_WriteVector("m_vecAngles", vecDir);
 	TE_WriteNum("m_iSeed", seed);
-	TE_WriteNum("m_iShots", shots);
 	TE_WriteNum("m_iPlayer", player);
-	TE_WriteFloat("m_flSpread", spread);
-	TE_WriteNum("m_bDoImpacts", doImpacts);
-	TE_WriteNum("m_bDoTracers", doTracers);
+	TE_WriteFloat("m_fSpread", spread);
 }
 
 stock void TE_SetupSpriteSpray(float[3] origin, float[3] vecDir, float[3] size, int modelIndex, int random, int count, float life, int flags){
