@@ -314,10 +314,11 @@ stock void Tools_ViewPunch(int client, float angleOffset[3]){
 }
 
 stock void TE_SetupShotgunShot(float[3] origin, float[3] vecDir, int ammoID, int seed, int shots, int player, float spread, bool doImpacts = true, bool doTracers = true, int weapon){
-	TE_Start("Fire Bullets");
-	TE_WriteVector("m_vecOrigin", origin);
-	TE_WriteNum("m_iSeed", seed);
-	TE_WriteNum("m_iPlayer", player);
+	//TE_Start("Fire Bullets");
+	//TE_WriteVector("m_vecOrigin", origin);
+	//TE_WriteFloatArray("m_vecAngles", vecDir, sizeof(vecDir));
+	//TE_WriteNum("m_iSeed", seed);
+	//TE_WriteNum("m_iPlayer", player);
 }
 
 stock void TE_SetupSpriteSpray(float[3] origin, float[3] vecDir, float[3] size, int modelIndex, int random, int count, float life, int flags){
@@ -454,7 +455,7 @@ stock void MarkSurrBoundsDirty(int entity){
 stock void swapVM(int client, bool predicted){
 	int oldVM = GetEntPropEnt(client, Prop_Send, "m_hViewModel");
 	char newClassname[32];
-	newClassname = predicted? "tf_viewmodel" : "tf_viewmodel";
+	newClassname =  "tf_viewmodel";
 	
 	if(oldVM != -1){
 		char sOld[32];	GetEntityClassname(oldVM, sOld, sizeof(sOld));
