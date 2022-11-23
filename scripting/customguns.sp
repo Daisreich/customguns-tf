@@ -682,6 +682,7 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 		GetArrayString(gunClassNames, index, weapon, sizeof(weapon));
 		DispatchKeyValue(ent, "classname", weapon);
 		DispatchKeyValueFloat(ent, "skin", float(view_as<int>(GetArrayCell(gunSkin, index))));
+		SetEntProp(ent, Prop_Send, "m_iItemDefinitionIndex", 26);
 		DispatchSpawn(ent);
 		ActivateEntity(ent);
 
@@ -696,7 +697,6 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 		} else {
 			SetEntProp(ent, Prop_Data, "m_bReloadsSingly", GetArrayCell(gunReloadsSingly, index));
 		}
-		SetEntProp(ent, Prop_Send, "m_iItemDefinitionIndex", 0);
 		TeleportEntity(ent, origin, NULL_VECTOR, NULL_VECTOR);
 	}
 	return ent;
