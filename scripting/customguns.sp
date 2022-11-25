@@ -143,10 +143,6 @@ public Native_RadiusDamage(Handle plugin, numParams)
 
 public OnPluginStart()
 {
-	// load hl2 fire particles, and then move to the hooks
-	PrecacheGeneric("particles/burning_fx.pcf");
-	PrecacheGeneric("particles/fire_01.pcf");
-
 	/***************************/
 	/********** HOOKS **********/
 	/***************************/
@@ -484,7 +480,6 @@ public Action CustomGun(int client, int args) {
 public OnConfigsExecuted() {
 	precacheStyles();
 	
-	PrecacheModel("models/weapons/w_grenade.mdl");
 	PrecacheSound(SND_OPEN, true);
 	PrecacheSound(SND_CLOSE_OK, true);
 	PrecacheScriptSound(SND_CLOSE_CANC);
@@ -547,6 +542,7 @@ public Action OnSpawn(Handle event, const char[] name, bool dontBroadcast)
 {
 	int client = GetClientOfUserId(GetEventInt(event, "userid"));
 	if (!IsFakeClient(client)) {
+		SetEntProp(client, Prop_Data, "m_bPredictWeapons", true);
 		selectedGunIndex[client] = -1;
 		if(GetConVarBool(customguns_autogive)){
 			addSpawnWeapons(client);
@@ -614,8 +610,6 @@ stock giveCustomGun(client, int index = -1, bool switchTo = false) {
 		if (ent != -1) {
 			selectedGunIndex[client] = index;
 			EquipPlayerWeapon(client, ent);
-			if (!IsFakeClient(client))
-				SetEntProp(client, Prop_Data, "m_bPredictWeapons", false);
 			if (switchTo) {
 				SDKCall(CALL_Weapon_Switch, client, ent, 0);
 				CreateTimer(0.1, deploySound, EntIndexToEntRef(ent));
@@ -636,8 +630,6 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 	// weapon_hl2mp_base : the same as above, flickers
 	// basehlcombatweapon : pretty good, but overshadowing with other weapons at slot 0,0
 	// weapon_cubemap : also good, but does not show stock ammo of player (pesky cubemap has -1 clips and no ammotype on client by default)
-	// weapon_ifm_base: there is no cubemap weapon in TF2. i have to use the SFM weapon base but it overrides slot 0, which is known to be problematic in this case.
-
 	int ent = CreateEntityByName("weapon_ifm_base");
 	if (ent != -1) {
 
@@ -690,7 +682,6 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 		GetArrayString(gunClassNames, index, weapon, sizeof(weapon));
 		DispatchKeyValue(ent, "classname", weapon);
 		DispatchKeyValueFloat(ent, "skin", float(view_as<int>(GetArrayCell(gunSkin, index))));
-		SetEntProp(ent, Prop_Send, "m_iItemDefinitionIndex", 26);
 		DispatchSpawn(ent);
 		ActivateEntity(ent);
 
@@ -705,6 +696,7 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 		} else {
 			SetEntProp(ent, Prop_Data, "m_bReloadsSingly", GetArrayCell(gunReloadsSingly, index));
 		}
+
 		TeleportEntity(ent, origin, NULL_VECTOR, NULL_VECTOR);
 	}
 	return ent;
