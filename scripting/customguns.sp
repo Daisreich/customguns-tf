@@ -143,6 +143,10 @@ public Native_RadiusDamage(Handle plugin, numParams)
 
 public OnPluginStart()
 {
+	// load hl2 fire particles, and then move to the hooks
+	PrecacheGeneric("particles/burning_fx.pcf");
+	PrecacheGeneric("particles/fire_01.pcf");
+
 	/***************************/
 	/********** HOOKS **********/
 	/***************************/
@@ -630,6 +634,8 @@ int spawnGun(int index, const float origin[3] = NULL_VECTOR) {
 	// weapon_hl2mp_base : the same as above, flickers
 	// basehlcombatweapon : pretty good, but overshadowing with other weapons at slot 0,0
 	// weapon_cubemap : also good, but does not show stock ammo of player (pesky cubemap has -1 clips and no ammotype on client by default)
+	// weapon_ifm_base: there is no cubemap weapon in TF2. i have to use the SFM weapon base but it overrides slot 0, which is known to be problematic in this case.
+
 	int ent = CreateEntityByName("weapon_ifm_base");
 	if (ent != -1) {
 
