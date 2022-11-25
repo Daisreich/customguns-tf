@@ -69,6 +69,7 @@ public void CG_OnPrimaryAttack(int client, int weapon){
 	char sWeapon[32];
 	GetEntityClassname(weapon, sWeapon, sizeof(sWeapon));
 	
+	SetEntProp(client, Prop_Data, "m_bPredictWeapons", true);
 	if(StrEqual(sWeapon, CLASSNAME)){
 		if(m_bCharging[client]){
 			return;
@@ -88,6 +89,7 @@ public void CG_OnSecondaryAttack(int client, int weapon){
 	char sWeapon[32];
 	GetEntityClassname(weapon, sWeapon, sizeof(sWeapon));
 	
+	SetEntProp(client, Prop_Data, "m_bPredictWeapons", true);
 	if(StrEqual(sWeapon, CLASSNAME)){
 	
 		if(getClientPrimaryAmmoForWeapon(client, weapon) <= 0){
