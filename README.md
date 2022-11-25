@@ -3,7 +3,7 @@ Sourcemod plugin that adds custom weapons with custom code to Team Fortress 2
 
 Known Issues
 ---------
-- [x] Custom weapons without custom plugins have their sounds interrupted
+- [x] Custom weapons without custom plugins have their sounds interrupted (to fix it for the client, we have to disable cl_predictweapons)
 - [x] Molotov fire is not visible to anyone
 - [x] Viewmodel flickers
 
