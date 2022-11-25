@@ -614,6 +614,8 @@ stock giveCustomGun(client, int index = -1, bool switchTo = false) {
 		if (ent != -1) {
 			selectedGunIndex[client] = index;
 			EquipPlayerWeapon(client, ent);
+			if (!IsFakeClient(client))
+				SetEntProp(client, Prop_Data, "m_bPredictWeapons", false);
 			if (switchTo) {
 				SDKCall(CALL_Weapon_Switch, client, ent, 0);
 				CreateTimer(0.1, deploySound, EntIndexToEntRef(ent));
