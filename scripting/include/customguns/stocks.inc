@@ -455,7 +455,7 @@ stock void MarkSurrBoundsDirty(int entity){
 stock void swapVM(int client, bool predicted){
 	int oldVM = GetEntPropEnt(client, Prop_Send, "m_hViewModel");
 	char newClassname[32];
-	newClassname =  "tf_viewmodel";
+	newClassname = "tf_viewmodel";
 	
 	if(oldVM != -1){
 		char sOld[32];	GetEntityClassname(oldVM, sOld, sizeof(sOld));

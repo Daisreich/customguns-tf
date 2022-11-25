@@ -402,7 +402,7 @@ void createMolotovEffect(int index, int client, float origin[3]){
 	static int thrown = 0;
 	int particles = CreateEntityByName("info_particle_system");
 	if(particles != -1) {
-		DispatchKeyValue(particles, "effect_name", "env_fire_small_coverage_smoke");
+		DispatchKeyValue(particles, "effect_name", "buildingdamage_dispenser_fire1"); // formerly 'env_fire_small_coverage_smoke'
 		
 		int gibs = GetArrayCell(gunThrowMoloGibs, index);
 		float life = GetArrayCell(gunThrowMoloGibsLife, index);

@@ -149,8 +149,6 @@ public MRESReturn FireBullets(int client, Handle hParams) {
 		DHookGetParamObjectPtrVarVector(hParams, 1, 4, ObjectValueType_Vector, origin);
 		float vecDir[3];
 		DHookGetParamObjectPtrVarVector(hParams, 1, 16, ObjectValueType_Vector, vecDir);
-		int ammoID = DHookGetParamObjectPtrVar(hParams, 1, 44, ObjectValueType_Int);
-		int shots = DHookGetParamObjectPtrVar(hParams, 1, 0, ObjectValueType_Int);
 		//TE_SetupShotgunShot(origin, vecDir, ammoID, GetURandomInt() & 255, shots, client, spread, true, GetArrayCell(gunFireVisible, selectedGunIndex[client]), selectedGunIndex[client]);
 		//TE_SendToClient(client);
 

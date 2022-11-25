@@ -381,11 +381,7 @@ int getInventoryIndex(int client, int weaponIndex) {
 }
 
 bool canSelectItem(int client, int inventoryIndex) {
-	int invAmmo = GetArrayCell(inventoryAmmo[client], inventoryIndex);
-	int invAmmoType = GetArrayCell(inventoryAmmoType[client], inventoryIndex);
-	int gunIndex = GetArrayCell(inventory[client], inventoryIndex);
-
-	return true
+	return true;
 }
 
 bool isCustom(int weaponEnt) {
